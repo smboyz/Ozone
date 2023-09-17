@@ -1,0 +1,31 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for legal in leg %}
+    <section class="banner">
+      <div class="image-cont">
+        {% if legal.slider_image %}<img src="{{ legal.slider_image.url }}" alt="" class="w-full">{% endif %}
+      </div>
+      <h2>{{ legal.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="document-two">
+      <div class="container">
+        <div class="container py-5">
+          <h1 style=" padding-bottom: 10px; " class="mt-3">{{ legal.name }}</h1>
+          <hr>
+          <div style="padding-top: 10px;" class="legaldocs">
+            {% for legal in leg1 %}
+              <div class="legal-doc">
+                <a class="w-100" href="{{ legal.brochure.url }}" target="_blank">
+                  <img class="w-100" src="{{ legal.bannerimage.url }}" alt="" />
+                </a>
+                <h4 style="text-align: center;">{{ legal.caption }}</h4>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

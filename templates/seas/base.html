@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ozone Overseas Service Pvt. Ltd.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+          integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    {% include "seas/header/header.html" %}
+    {% block content %}
+    {% endblock content %}
+    {% include "seas/footer/footer.html" %}
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+    <!---
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+            integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <!-- <script src="owlcarousel/owl.carousel.min.js"></script> -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+                  $(document).ready(function () {
+                    $('#carousel1').owlCarousel({
+                      loop: true,
+                      margin: 10,
+                      responsiveClass: true,
+                      autoplay: true,
+                      responsive: {
+                        0: {
+                          items: 1,
+                          nav: false
+                        },
+                        600: {
+                          items: 2,
+                          nav: false
+                        },
+                        1000: {
+                          items: 4,
+                          nav: false,
+                          loop: false
+                        }
+                      }
+                    });
+                
+                    $('#carousel2').owlCarousel({
+                      loop: true,
+                      margin: 10,
+                      responsiveClass: true,
+                      autoplay: true,
+                      responsive: {
+                        0: {
+                          items: 2,
+                          nav: false
+                        },
+                        600: {
+                          items: 3,
+                          nav: false
+                        },
+                        1000: {
+                          items: 5,
+                          nav: false,
+                          loop: false
+                        }
+                      }
+                    });
+                  });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>AOS.init();</script>
+    <!-- Initialize Bootstrap JavaScript -->
+    <script>
+      const sidebar = document.querySelector('.sidebar');
+      const cross = document.querySelector('.cross');
+      const bar = document.querySelector('.bar');
+      
+      bar.classList.add('showbar')
+      bar.addEventListener('click', () => {
+          if (sidebar.classList.contains('sidebargo')) {
+              sidebar.classList.remove('sidebargo');
+              cross.classList.remove('showcross');
+          } else {
+              sidebar.classList.add('sidebargo');
+              cross.classList.add('showcross');
+              bar.classList.remove('showbar')
+          }
+      });
+      
+      cross.addEventListener('click', () => {
+          sidebar.classList.remove('sidebargo');
+          cross.classList.remove('showcross');
+          bar.classList.add('showbar')
+      });
+    </script>
+  </body>
+</html>

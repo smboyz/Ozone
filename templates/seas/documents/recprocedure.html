@@ -1,0 +1,37 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for procuder in recpro %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ procuder.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ procuder.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="event">
+      <div class="container">
+        <h2 class="text-center">{{ procuder.caption }}</h2>
+        {% for procuder in recpro1 %}
+          <div class="row mt-5 p-4">
+            <div class="col-lg-4 ">
+              <div class="event-img ">
+                <img src="{{ procuder.bannerimage.url }}" alt="">
+              </div>
+            </div>
+            <div class="col-lg-8 ">
+              <div class="event-content">
+                <h4>{{ procuder.title }}</h4>
+                <div class="procuder-list">
+                  {% autoescape off %}
+                    {{ procuder.short_desc }}
+                  {% endautoescape %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

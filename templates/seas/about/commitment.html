@@ -1,0 +1,23 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for commet in comm %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ commet.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ commet.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="commitment">
+      <div class="container py-5">
+        <h3 class="text-center mt-4">{{ commet.caption }}</h3>
+        <p class="mt-5">
+          {% autoescape off %}
+            {{ commet.short_desc }}
+          {% endautoescape %}
+        </p>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

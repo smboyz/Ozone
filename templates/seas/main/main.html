@@ -1,0 +1,290 @@
+{% load static %}
+<div id="carouselExampleAutoplaying"
+     class="carousel slide  "
+     data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for slis in sli %}
+            <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                <div class="fill">
+                    <img src="{{ slis.bannerimage.url }}"
+                         class="d-block w-100"
+                         alt="..."
+                         style="max-height:100vh">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-text1">
+                            {% comment %} <h5 data-aos="fade-up-right">{{ slis.caption }}</h5> {% endcomment %}
+                            <h5 data-aos="fade-up-right">{{ slis.title }}</h5>
+                            <h6></h6>
+                            <p data-aos="fade-up-left">{{ slis.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% for about in abo %}
+    <section class="welcome  ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-lg-6">
+                    <div class="welcome-heading">
+                        <h3 data-aos="fade-up" data-aos-duration="3000">{{ about.title }}</h3>
+                    </div>
+                    <div class="welcome-text">
+                        <p class="mt-4"
+                           data-aos="fade-down"
+                           data-aos-easing="linear"
+                           data-aos-duration="1500">
+                            {% autoescape off %}
+                                {{ about.short_desc }}
+                            {% endautoescape %}
+                        </p>
+                    </div>
+                    <div class="welcome-button mt-5"
+                         data-aos="fade-up"
+                         data-aos-duration="3000">
+                        <a href="{% url 'aboutcompany' %}" data-aos="flip-left">Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-end" data-aos="zoom-in">
+                    <div class="welcome-img ">
+                        <img class="w-100 img-fluid" src="{{ about.bannerimage.url }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}
+{% for service in ser1 %}
+    <section class="services ">
+        <div class="container  text-center py-5">
+            <h3 class="mb-5 "
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1500">{{ service.caption }}</h3>
+            <div class="row ">
+                {% for service in ser %}
+                    <div class="col-lg-3"
+                         data-aos="fade-down"
+                         data-aos-easing="linear"
+                         data-aos-duration="1500">
+                        <div class="our-services">
+                            <img src="{{ service.bannerimage.url }}" alt="">
+                            <p class="services-p1">{{ service.title }}</p>
+                            <p class="services-p2">{{ service.desc }}</p>
+                            <a href="{% url 'services' %}">Read More</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endfor %}
+{% for service in over1 %}
+    <section class="why-services">
+        <div class="container">
+            <h3 class="text-center mb-5"
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1500">
+                {{ service.caption }}
+                <br>
+                <span class="why-underline">{{ service.title }}</span>
+            </h3>
+            <div class="row  mt-5">
+                {% for service in over %}
+                    <div class="col-lg-3 "
+                         data-aos="flip-left"
+                         data-aos-easing="ease-out-cubic"
+                         data-aos-duration="2000">
+                        <div class="why-box text-center">
+                            <div class="why-icon  ">
+                                <ul class="list-inline ">
+                                    <li class="list-inline-item">
+                                        <i class="fa-solid fa-users"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="why-content pb-5">
+                                <h4>{{ service.name }}</h4>
+                                <p>{{ service.title }}</p>
+                                <a href="{% url 'why' %}"><i class="fa-solid fa-circle-dot"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!----
+        <div class="row g-0 mt-4"  data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+            <div class="col-lg-3 ">
+                <div class="why-box text-center">
+                <div class="why-icon  ">
+                   
+
+                    <ul class="list-inline ">
+                        <li class="list-inline-item"><i class="fa-solid fa-users"></i></li>
+                        
+                        
+                      </ul>
+                </div>
+                <div class="why-content">
+                    <h4>OUR QUALITIES</h4>
+                    <p>(OZONE) Certified Company</p>
+
+                    <a href="why.html"><i class="fa-solid fa-circle-dot"></i></a>
+                    
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-4"  data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                <div class="why-box text-center">
+                <div class="why-icon  ">
+                   
+
+                    <ul class="list-inline ">
+                        <li class="list-inline-item"><i class="fa-solid fa-users"></i></li>
+                        
+                        
+                      </ul>
+                </div>
+                <div class="why-content">
+                    <h4>OUR QUALITIES</h4>
+                    <p>(OZONE) Certified Company</p>
+
+                    <a href="why.html"><i class="fa-solid fa-circle-dot"></i></a>
+                    
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-4 "  data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                <div class="why-box text-center">
+                <div class="why-icon  ">
+                   
+
+                    <ul class="list-inline ">
+                        <li class="list-inline-item"><i class="fa-solid fa-users"></i></li>
+                        
+                        
+                      </ul>
+                </div>
+                <div class="why-content">
+                    <h4>OUR QUALITIES</h4>
+                    <p>(OZONE) Certified Company</p>
+
+                    <a href="why.html"><i class="fa-solid fa-circle-dot"></i></a>
+                    
+                </div>
+                </div>
+            </div>
+        </div>-->
+        </div>
+    </section>
+{% endfor %}
+{% for required in req1 %}
+    <section class="procuder">
+        <div class="container">
+            <h3 class="text-center"
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1500">
+                {{ required.name }}
+                <br>
+                <span class="pro-underline">{{ required.caption }}</span>
+            </h3>
+            <div class="row mt-5">
+                {% for required in req %}
+                    <div class="col-lg-3" data-aos="zoom-in">
+                        <div class="procuder-box mt-5" style="min-height:290px">
+                            <div class="procuder-img text-center">
+                                <img class='W-100' src="{{ required.bannerimage.url }}" alt="">
+                            </div>
+                            <div class="procuder-text text-center mt-5"
+                                 style="min-height:150px;
+                                        word-wrap: break-word">
+                                <a class="d-block" href="{% url 'recprocedure' %}">{{ required.name }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endfor %}
+{% for client in cli1 %}
+    <section class="testimonial">
+        <div class="container text-center">
+            <h3 class="text-center mb-3"
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1500">
+                <span class="testimonial-underline">{{ client.name }}</span>
+            </h3>
+            <p class="mb-3"
+               data-aos="fade-down"
+               data-aos-easing="linear"
+               data-aos-duration="1500">
+                {% autoescape off %}
+                    {{ client.short_desc }}
+                {% endautoescape %}
+            </p>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div id="carousel1" class="owl-carousel">
+                        {% for test in cli %}
+                            <div class="one  ">
+                                <p class="text-center">
+                                    {{ test.desc }}
+                                </p>
+                                <img src="{{ test.bannerimage.url }}" alt="" class="w-100">
+                                <div class="content ">
+                                    <h4>
+                                        {{ test.name }}
+                                    </h4>
+                                    <p>
+                                        {{ test.caption }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}
+{% for client in cli3 %}
+    <section class="last-slider">
+        <div class="container py-5  ">
+            <h3 class="text-center mb-5"
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1500">
+                <span class="client-underline">{{ client.name }}</span>
+            </h3>
+            <div class="last-slider_box">
+                <div id="carousel2" class="owl-carousel mt-5">
+                    {% for clients in cli2 %}
+                        <div class="last-carousel">
+                            <img src="{{ clients.bannerimage.url }}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}

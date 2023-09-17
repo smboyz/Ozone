@@ -1,0 +1,19 @@
+source /home/ozoneoverseas/virtualenv/ozoneoverseas/3.8/bin/activate && cd /home/ozoneoverseas/ozoneoverseas
+
+Database
+user  ozoneoverseas_ozone
+
+users
+username ozoneoverseas_ozoneoverseas
+password 4gd1wr7#-LKQ
+
+
+
+pip install django==4.1.4
+pip install mysqlclient==2.1.1
+pip install pillow==9.4.0
+
+
+#admin
+Ozone
+Ozone@12345

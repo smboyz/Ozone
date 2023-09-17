@@ -1,0 +1,164 @@
+{% load static %}
+{% for globs in glob %}
+    <footer>
+        <div class="container py-5">
+            <div class="row py-5">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="footer-img text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <img class="mt-3" src="{{ globs.logo.url }}" alt="">
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">{{ globs.Sitedescription }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="footer-heading">
+                        <h5>Get In Touch</h5>
+                    </div>
+                    <div class="footer-content">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="fa-solid fa-envelope mx-2"></i></a>{{ globs.SiteEmail }}
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="fa-solid fa-phone mx-2"></i></a>{{ globs.SiteContact }}
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="fa-solid fa-location-dot mx-2"></i></a>{{ globs.SiteAddress }}
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="fa-solid fa-fax mx-2"></i></a>{{ globs.Sitefax }}
+                            </li>
+                        </ul>
+                        <div class="country-title mt-3">
+                            <a href="{{ globs.brochure.url }}" target="_blank">{{ globs.brochure_name }}
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="60px"
+                                     height="26px"
+                                     fill="currentColor"
+                                     class="bi bi-file-earmark-arrow-down"
+                                     viewBox="0 0 16 16">
+                                    <path d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z" />
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="footer-heading">
+                        <h5>Quick Links</h5>
+                    </div>
+                    <div class="footer-nav">
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'aboutcompany' %}">About</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'contact' %}">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'demandletter' %}">Documents</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'gallery' %}">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'joblist' %}">Job List</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'instructors' %}">Pages</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="footer-heading">
+                        <h5>Google Map</h5>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14130.924577444284!2d85.33106357081337!3d27.694703324266495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb199a06c2eaf9%3A0xc5670a9173e161de!2z4KSo4KSv4KS-4KSBIOCkrOCkvuCkqOClh-CktuCljeCkteCksCwg4KSV4KS-4KSg4KSu4KS-4KSh4KWM4KSBIDQ0NjAw!5e0!3m2!1sne!2snp!4v1678478989834!5m2!1sne!2snp"
+                                style="border:0"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div> 
+                {% comment %} <div class="col-lg-3">
+                    <div class="footer-heading">
+                        <h5>Features</h5>
+                    </div>
+                    <div class="footer-nav">
+                        <ul data-aos="fade-right">
+                            <li>
+                                <a href="">Business planning</a>
+                            </li>
+                            <li>
+                                <a href="">Content Strategy</a>
+                            </li>
+                            <li>
+                                <a href="">Design & Planning</a>
+                            </li>
+                            <li>
+                                <a href="">Collaborattion</a>
+                            </li>
+                            <li>
+                                <a href="">Parent Community</a>
+                            </li>
+                            <li>
+                                <a href="">Manage investment</a>
+                            </li>
+                            <li>
+                                <a href="">Manage investment</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </footer>
+    <section class="last-footer py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <p>Copyright © 2023. All rights reserved.</p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <div class="last-footer_icon">
+                        <ul class="list-inline tt">
+                            <li class="list-inline-item">
+                                <a href="{{ globs.Sitefacebooklink }}" class="t1"><i class="fa-brands fa-facebook-f"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ globs.Sitetwitterlink }}"class="f1"><i class="fa-brands fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ globs.Siteinstagram }}" class="pi1"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ globs.Sitelinkdinlink }}" class="g1"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ globs.Sitefacebooklink }}" class="in1"><i class="fa-brands fa-whatsapp"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <p class="text-end">Designed by Radiant Infotech</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}

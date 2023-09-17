@@ -1,0 +1,93 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for whys in why %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ whys.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ whys.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="why">
+      <div class="container">
+        <h3 class=" text-center mb-5">{{ whys.caption }}</h3>
+        <h2 class="text-center">
+          {% autoescape off %}
+            {{ whys.short_desc }}
+          {% endautoescape %}
+        </h2>
+        {% for whys in why1 %}
+          <div class="row mb-5 mt-5">
+            <div class="col-lg-4">
+              <div class="message-box">
+                <div class="message-img">
+                  <img src="{{ whys.bannerimage.url }}" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="message-box">
+                <div class="message-content">
+                  <h5>{{ whys.name }}</h5>
+                  <p>
+                    {% autoescape off %}
+                      {{ whys.short_desc }}
+                    {% endautoescape %}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      {% comment %} <section class="question">
+        <div class="container">
+          <h2>{{ whys.title }}</h2>
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="question-img mt-5">
+                <img src="{{ whys.bannerimage.url }}" alt="">
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="question-content">
+                <h3 class="text-center mb-5">{{ whys.meta_title }}</h3>
+                <div class="row justify-content-center ">
+                  <div class="col-lg-8">
+                    <div class="bg-white p-4 box py-3">
+                      <div class="accordion" id="mainAccordion">
+                        {% for whys in why2 %}
+                          <div class="accordion-item ">
+                            <div class="accordion-header">
+                              <button class="accordion-button  "
+                                      data-bs-target="#q{{ forloop.counter }}"
+                                      data-bs-toggle="collapse">
+                                <span class="">{{ whys.name }}</span>
+                              </button>
+                            </div>
+                            <div class="collapse "
+                                 id="q{{ forloop.counter }}"
+                                 data-bs-parent="#mainAccordion">
+                              <div class="accordion-body">
+                                <p>
+                                  {% autoescape off %}
+                                    {{ whys.short_desc }}
+                                  {% endautoescape %}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> {% endcomment %}
+  {% endfor %}
+{% endblock content %}

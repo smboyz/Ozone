@@ -1,0 +1,48 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for service in serv %}
+    <section class="banner">
+      <div class="image-cont">
+        {% if service.slider_image %}<img src="{{ service.slider_image.url }}" alt="" class="w-full">{% endif %}
+      </div>
+      <h2>{{ service.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="services-one py-5 ">
+      <div class="container ">
+        <h2 class="text-center">{{ service.caption }}</h2>
+        <div class="row mt-4">
+          <div class="col-lg-12">
+            <div class="services-list">
+              {% autoescape off %}
+                {{ service.short_desc }}
+              {% endautoescape %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="country-serve">
+      <div class="container py-5">
+        <h3 class="text-center">{{ service.title }}</h3>
+        <div class="row mt-5">
+          <div class="col-12">
+            <div id="owl-demo-1" class="owl-carousel">
+              {% for conts in cont %}
+                <div class="one  ">
+                  <a href="{% url 'country' id=conts.pk %}" style="text-decoration: none">
+                    <img src="{{ conts.bannerimage.url }}" alt="" class="img-fluid">
+                    <div class="content ">
+                      <h4>{{ conts.name }}</h4>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

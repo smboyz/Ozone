@@ -1,0 +1,33 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for instructor in inst %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ instructor.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ instructor.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="our-team">
+      <div class="container">
+        <h3 class="text-center ">{{ instructor.caption }}</h3>
+        <div class="row mt-5">
+          {% for instructor in inst1 %}
+            <div class="col-lg-4 mt-3">
+              <div class="our-team_box">
+                <div class="our-team_img">
+                  <img src="{{ instructor.bannerimage.url }}" alt="" class="img-fluid">
+                </div>
+              </div>
+              <div class="team-box_last">
+                <h4>{{ instructor.name }}</h4>
+                <span>{{ instructor.caption }}</span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

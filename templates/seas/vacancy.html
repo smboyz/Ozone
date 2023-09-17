@@ -1,0 +1,115 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for Vacancy in vac1 %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ Vacancy.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ Vacancy.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="vacancy-gallery min-vh-100">
+      <div class="container-lg">
+        <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
+          {% for Vac_item in page_obj %}
+            <div class="col">
+              <img src="{{ Vac_item.bannerimage.url }}"
+                   alt="gallery"
+                   class="gallery-item">
+              <div class="gallery-modal-text text-center">
+                <h5>{{ Vac_item.caption }}</h5>
+                <h5>{{ Vac_item.title }}</h5>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <div class="modal fade"
+         id="gallery-modal"
+         tabindex="-1"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!--<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="img/newspaper.jpg" alt="modal img" class="modal-img">
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} <section class="document-two">
+      <div class="container">
+        <div class="container py-5">
+          <h1 style=" padding-bottom: 10px; " class="mt-3">{{ Vacancy.caption }}</h1>
+          <hr>
+          <div style="padding-top: 10px;" class="legaldocs">
+            {% for Vac_item in page_obj %}
+              <div class="legal-doc">
+                <a class="w-100" href="{{ Vac_item.brochure.url }}">
+                  <img class="w-100" src="{{ Vac_item.bannerimage.url }}" alt="Legal Document 1" />
+                </a>
+                <div class="document-content">
+                  <h4 style="text-align: center;">{{ Vac_item.caption }}</h4>
+                  <h4 class="text-center">{{ Vac_item.title }}</h4>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section> {% endcomment %}
+    <!-- Pagination Links -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="First">First</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="?page={{ page_obj.previous_page_number }}"
+               aria-label="Previous">Previous</a>
+          </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+          <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+          </li>
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link"
+               href="?page={{ page_obj.next_page_number }}"
+               aria-label="Next">Next</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="?page={{ page_obj.paginator.num_pages }}"
+               aria-label="Last">Last</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- Remaining template code -->
+    <script>
+      document.addEventListener("click", function(e){
+      if(e.target.classList.contains("gallery-item")){
+
+        const src = e.target.getAttribute("src");
+        document.querySelector(".modal-img").src = src;
+        const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+        myModal.show();
+      }
+    })  
+    </script>
+  {% endfor %}
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for jobs in job %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ jobs.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ jobs.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="job-list">
+      <div class="container">
+        <h3 class="text-center ">{{ jobs.caption }}</h3>
+        <div class="row mt-5">
+          <div class="col-lg-6">
+            <div class="job-box">
+              {% for job in un1 %}
+                <div class="job-content">
+                  <h3>{{ job.name }}</h3>
+                  {% for job in un %}
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="{% url 'jobdetails' %}"><i class="fa-solid fa-arrow-right mx-2"></i></a>{{ job.name }}
+                      </li>
+                    </ul>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="job-box">
+              {% for sems in semi1 %}
+                <div class="job-content">
+                  <h3>{{ sems.name }}</h3>
+                  {% for sems in semi %}
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="{% url 'jobdetails' %}"><i class="fa-solid fa-arrow-right mx-2"></i></a>{{ sems.name }}
+                      </li>
+                    </ul>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-lg-6">
+            <div class="job-box">
+              {% for skill in ski1 %}
+                <div class="job-content">
+                  <h3>{{ skill.name }}</h3>
+                  {% for skill in ski %}
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="{% url 'jobdetails' %}"><i class="fa-solid fa-arrow-right mx-2"></i></a>{{ skill.name }}
+                      </li>
+                    </ul>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% comment %} <div class="col-lg-6">
+            <div class="job-box">
+              {% for high in hig1 %}
+                <div class="job-content">
+                  <h3>{{ high.name }}</h3>
+                  {% for high in hig %}
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="{% url 'jobdetails' %}"><i class="fa-solid fa-arrow-right mx-2"></i></a>{{ high.name }}
+                      </li>
+                    </ul>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </div> {% endcomment %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

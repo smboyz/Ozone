@@ -1,0 +1,27 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+    {% for conts in cont %}
+        <section class="banner">
+            <div class="image-cont">
+                <img src="{{ conts.slider_image.url }}" alt="" class="w-full">
+            </div>
+            <h2>{{ conts.caption }}</h2>
+            <div class="overylay"></div>
+        </section>
+        <section class="event">
+            <div class="container">
+                <h2 class="text-center">{{ conts.title }}</h2>
+                <div class="row mt-5 p-4">
+                    <div class="col-lg-8 ">
+                        <div class="event-content">
+                            {% autoescape off %}
+                                {{ conts.short_desc }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+{% endblock content %}

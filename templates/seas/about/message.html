@@ -1,0 +1,49 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for message in mess %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ message.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ message.caption }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="our-message">
+      <div class="container">
+        <h3 class="text-center mb-5">
+          {% autoescape off %}
+            {{ message.short_desc }}
+          {% endautoescape %}
+        </h3>
+        <div class="row mb-5">
+          {% for message in mess1 %}
+            <div class="col-lg-4">
+              <div class="message-box">
+                <div class="message-img">
+                  <img src="{{ message.bannerimage.url }}" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="message-box">
+                <div class="message-content">
+                  <h4>{{ message.caption }}</h4>
+                  <p>
+                    {% autoescape off %}
+                      {{ message.short_desc }}
+                    {% endautoescape %}
+                  </p>
+                  <div class="message-text mt-5">
+                    <h5>{{ message.name }}</h5>
+                    <h6>{{ message.title }}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

@@ -1,0 +1,115 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for gallery in gall %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ gallery.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ gallery.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="our-gallery ">
+      <h2 class="text-center">{{ gallery.caption }}</h2>
+      <div class="container">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active"
+               id="pills-home"
+               role="tabpanel"
+               aria-labelledby="pills-home-tab"
+               tabindex="0">
+            <div class="row ">
+              {% for gallery_item in page_obj %}
+                <div class="col-lg-4">
+                  <img src="{{ gallery_item.bannerimage.url }}"
+                       alt=""
+                       class="gallery-img"
+                       data-bs-toggle="modal"
+                       data-bs-target="gallery-modal"
+                       data-src="{{ gallery_item.bannerimage.url }}">
+                  <!-- Debug: {{ gallery_item.bannerimage.url }} -->
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="modal fade"
+         id="gallery-modal"
+         tabindex="-1"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="" alt="modal img" class="modal-img" id="modal-image">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Existing template code -->
+    <!-- Pagination Links -->
+    <nav aria-label="Page navigation example" style="background: none">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="First">First</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="?page={{ page_obj.previous_page_number }}"
+               aria-label="Previous">Previous</a>
+          </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+          <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+          </li>
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link"
+               href="?page={{ page_obj.next_page_number }}"
+               aria-label="Next">Next</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link"
+               href="?page={{ page_obj.paginator.num_pages }}"
+               aria-label="Last">Last</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- Remaining template code -->
+    <script>
+      console.log("Script is running");
+    
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("gallery-img")) {
+          // Get the src attribute of the clicked element
+          const src = e.target.getAttribute("data-src");
+    
+          // Check if the .modal-img element exists
+          const modalImage = document.getElementById("modal-image");
+          if (modalImage) {
+            // Set the src of the .modal-img element
+            modalImage.src = src;
+    
+            // Show the modal using Bootstrap's modal method
+            const galleryModal = new bootstrap.Modal(document.getElementById("gallery-modal"));
+            galleryModal.show();
+          } else {
+            console.error(".modal-img element not found");
+          }
+        }
+      });
+    </script>
+  {% endfor %}
+{% endblock content %}

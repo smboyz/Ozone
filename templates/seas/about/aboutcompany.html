@@ -1,0 +1,43 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for about in abo %}
+    <section class="banner">
+      <img src="{{ about.slider_image.url }}" alt="" class="image-cont">
+      <h2>{{ about.caption }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="welcome-heading"></div>
+            <div class="welcome-text">
+              <p class="mt-4">
+                {% autoescape off %}
+                  {{ about.short_desc }}
+                {% endautoescape %}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-2">
+            <div id="carouselExampleSlidesOnly"
+                 class="carousel slide "
+                 data-bs-ride="carousel">
+              <div class="carousel-inner">
+                {% for about in abo1 %}
+                  <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                    <img src="{{ about.bannerimage.url }}"
+                         class="d-block w-100 img-fluid"
+                         alt="..."
+                         style="height: auto; object-fit: cover;">
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}

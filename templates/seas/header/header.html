@@ -1,0 +1,93 @@
+{% load static %}
+{% for globs in glob %}
+  <section class="top-header">
+    <div class="container">
+      <div class="row top">
+        <div class="col-lg-3 col-12 text-start">
+          <div class="top-text">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href=""><i class="fa-solid fa-building mx-1"></i>{{ globs.Sitelicence }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-5 col-12">
+          <marquee onmouseover="this.stop();" onmouseout="this.start();">{{ globs.Sitedescription }}</marquee>
+        </div>
+        <div class="col-lg-4  text-end">
+          <div class="top-social_icon">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{{ globs.Sitefacebooklink }}"><i class="fa-brands fa-facebook-f"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{ globs.Sitetwitterlink }}"><i class="fa-brands fa-twitter"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{ globs.Siteinstagram }}"><i class="fa-brands fa-instagram"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{ globs.Sitelinkdinlink }}"><i class="fa-brands fa-linkedin-in"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{ globs.Sitefacebooklink }}"><i class="fa-brands fa-whatsapp"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <nav class="navbar navbar-expand-lg Larger shadow  sticky-top">
+    <div class="container my-2">
+        <a class="navbar-brand" href="/">
+            <img src="{{ globs.logo.url }}" alt="">
+        </a>
+        <span class="d-none bar">
+            <i class="fa-solid fa-bars fs-5"></i>
+        </span>
+        <span class="d-none cross">
+            <i class="fa-solid fa-xmark fs-5"></i>
+        </span>
+        <div class="sidebar" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link home" aria-current="page" href="/">Home</a>
+                </li>
+          {% for nav in main %}
+            {% if nav.id != 1 and nav.id != 164 and nav.id != 165 %}
+              {% if nav.id == 5 %}
+                <li class="nav-item">
+                  <a class="nav-link home" aria-current="page" href="{% url 'vacancy' %}">{{ nav.name }}</a>
+                </li>
+              {% elif nav.childs.all %}
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle home "
+                     href="#"
+                     role="button"
+                     data-bs-toggle="dropdown"
+                     aria-expanded="false">{{ nav.name }}</a>
+                  <ul class="dropdown-menu  ">
+                    {% for sub_nav in nav.childs.all %}
+                      {% if sub_nav.status == 'Publish' %}
+                        <li>
+                          <a class="dropdown-item " href="{% url 'submenu' name=sub_nav.id %}">{{ sub_nav.name }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link home" href="{% url 'menu' name=nav.id %}">{{ nav.name }}</a>
+                </li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+{% endfor %}

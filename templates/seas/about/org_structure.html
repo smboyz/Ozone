@@ -1,0 +1,29 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for orgs in org %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ orgs.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ orgs.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <div class="container-fluid py-5 position-relative">
+      <!-- <div class="gradient-1"></div> -->
+      <div class="section-title pb-3 text-center position-relative mb-5 mx-auto"
+           style="max-width: 600px">
+        <h1 class="mb-0 text-center">{{ orgs.caption }}</h1>
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <img class="w-100"
+                 src="{{ orgs.bannerimage.url }}"
+                 alt="PRocedure for requirement">
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}

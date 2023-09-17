@@ -1,0 +1,61 @@
+{% extends "seas/base.html" %}
+{% load static %}
+{% block content %}
+  {% for mission in misi %}
+    <section class="banner">
+      <div class="image-cont">
+        <img src="{{ mission.slider_image.url }}" alt="" class="w-full">
+      </div>
+      <h2>{{ mission.name }}</h2>
+      <div class="overylay"></div>
+    </section>
+    <section class="our-message">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4">
+            <div class="message-box"></div>
+          </div>
+          <div class="col-lg-8">
+            <div class="message-box">
+              <div class="message-content"></div>
+              <h4 class=" mt-4">{{ mission.caption }}</h4>
+            </div>
+            <p>
+              {% autoescape off %}
+                {{ mission.short_desc }}
+              {% endautoescape %}
+            </p>
+            <div class="message-slider text-end">
+              <div id="carouselExampleAutoplaying "
+                   class="carousel slide"
+                   data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  {% for mission in misi1 %}
+                    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                      <img src="{{ mission.bannerimage.url }}" class="d-block w-100" alt="...">
+                    </div>
+                  {% endfor %}
+                </div>
+                <button class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endfor %}
+{% endblock content %}
